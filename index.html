@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apuração da Res Casada</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      h1,
+      h3 {
+        text-align: center;
+        color: #333;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .input-group {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      .input-group label {
+        font-weight: bold;
+      }
+      input {
+        padding: 8px;
+        font-size: 1rem;
+        width: 100%;
+        max-width: 150px;
+        margin: 0 auto;
+        text-align: center;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button {
+        padding: 10px 15px;
+        font-size: 1rem;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        align-self: center;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+      }
+      th,
+      td {
+        text-align: center;
+        padding: 10px;
+      }
+      th {
+        background-color: #007bff;
+        color: white;
+      }
+      @media (max-width: 600px) {
+        table,
+        th,
+        td {
+          font-size: 0.8rem;
+        }
+        .container {
+          padding: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Apuração da Res Casada</h1>
+
+    <div class="container">
+      <div class="input-group">
+        <label for="peso-nf">Peso Nota Fiscal (kg):</label>
+        <input
+          type="number"
+          id="peso-nf"
+          value="230"
+          step="0.01"
+          onchange="atualizar()"
+        />
+      </div>
+      <div class="input-group">
+        <label for="preco-compra">Preço de Compra por kg (R$):</label>
+        <input
+          type="number"
+          id="preco-compra"
+          value="20.00"
+          step="0.01"
+          onchange="atualizar()"
+        />
+      </div>
+    </div>
+
+    <h3>Resultados</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Corte</th>
+          <th>Peso (kg)</th>
+          <th>Preço Venda (R$/kg)</th>
+          <th>Compra (R$)</th>
+          <th>Venda (R$)</th>
+          <th>Lucro (R$)</th>
+          <th>Lucro (%)</th>
+        </tr>
+      </thead>
+      <tbody id="tabela-cortes">
+        <!-- Linhas da tabela geradas dinamicamente -->
+      </tbody>
+    </table>
+
+    <div class="container">
+      <h3>Totais</h3>
+      <p>
+        <strong>Compra Total (R$):</strong> <span id="compra-total">0.00</span>
+      </p>
+      <p>
+        <strong>Venda Total (R$):</strong> <span id="venda-total">0.00</span>
+      </p>
+      <p>
+        <strong>Lucro Total (R$):</strong> <span id="lucro-total">0.00</span>
+      </p>
+      <p>
+        <strong>Lucro Total (%):</strong>
+        <span id="porcentagem-lucro">0.00%</span>
+      </p>
+    </div>
+
+    <button onclick="exportarCSV()">Exportar como CSV</button>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
